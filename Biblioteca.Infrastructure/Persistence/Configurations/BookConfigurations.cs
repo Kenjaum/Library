@@ -13,7 +13,24 @@ namespace Library.Infrastructure.Persistence.Configurations
     {
         public void Configure(EntityTypeBuilder<Book> builder)
         {
-            builder.HasKey(x => x.Id);
+            builder
+                .HasKey(b => b.Id);
+
+            builder
+                .Property(b => b.Title)
+                .HasMaxLength(254);
+
+            builder
+               .Property(b => b.Author)
+               .HasMaxLength(100);
+
+            builder
+               .Property(b => b.ISBN)
+               .HasMaxLength(13);
+
+            builder
+                .HasIndex(b => b.ISBN)
+                .IsUnique();
         }
     }
 }
