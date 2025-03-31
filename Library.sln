@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35122.118
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.API", "Biblioteca.API\Library.API.csproj", "{4E1D79A5-B6E7-48FA-BC01-6128AAF1DCF7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.API", "Library.API\Library.API.csproj", "{4E1D79A5-B6E7-48FA-BC01-6128AAF1DCF7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.Core", "Biblioteca.Core\Library.Core.csproj", "{64F966CE-C3CC-414E-BDC6-B10DCA95E5F3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.Core", "Library.Core\Library.Core.csproj", "{64F966CE-C3CC-414E-BDC6-B10DCA95E5F3}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.Infrastructure", "Biblioteca.Infrastructure\Library.Infrastructure.csproj", "{08D639BC-2AF3-4B03-A66C-146B272EA112}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.Infrastructure", "Library.Infrastructure\Library.Infrastructure.csproj", "{08D639BC-2AF3-4B03-A66C-146B272EA112}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.Application", "Biblioteca.Application\Library.Application.csproj", "{0558EF77-62E9-4BEA-966A-43C3D576573E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.Application", "Library.Application\Library.Application.csproj", "{0558EF77-62E9-4BEA-966A-43C3D576573E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

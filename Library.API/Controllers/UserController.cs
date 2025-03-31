@@ -21,7 +21,7 @@ namespace Library.API.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Get()
+        public async Task<IActionResult> GetAll()
         {
             var getAllUsersQuery = new GetAllUsersQuery();
 
