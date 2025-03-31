@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Library.API.Controllers
 {
     [Route("api/v1/Book")]
+    [ApiController]
     public class BookController : ControllerBase
     {
         private readonly IMediator _mediator;
@@ -37,7 +38,7 @@ namespace Library.API.Controllers
             return Ok(book);
         }
 
-        [HttpPost, Authorize(Roles = "Admin")]
+        [HttpPost, Authorize(Roles = "admin")]
         public async Task<IActionResult> Post([FromBody] CreateBookCommand command)
         {
             if (command.Title.Length > 50)
@@ -51,7 +52,7 @@ namespace Library.API.Controllers
         }
 
         [HttpPut("{id}")]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "admin")]
         public async Task<IActionResult> Put(int id, [FromBody] UpdateBookCommand command)
         {
             await _mediator.Send(command);

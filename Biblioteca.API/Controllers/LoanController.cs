@@ -8,54 +8,51 @@ using Microsoft.AspNetCore.Mvc;
 namespace Library.API.Controllers
 {
     [Route("api/v1/Loan")]
+    [ApiController]
     public class LoanController : ControllerBase
     {
-        [Route("api/[controller]")]
-        [ApiController]
-        public class LoansController : ControllerBase
+        private readonly IMediator _mediator;
+
+        public LoanController(IMediator mediator)
         {
-            private readonly IMediator _mediator;
+            _mediator = mediator;
+        }
 
-            public LoansController(IMediator mediator)
+        [HttpGet]
+        [Authorize(Roles = "admin, student")]
+        public async Task<IActionResult> GetAll()
+        {
+            var getAllLoansQuery = new GetAllLoansQuery();
+
+            var loan = await _mediator.Send(getAllLoansQuery);
+
+            return Ok(loan);
+        }
+
+        [HttpGet("{id}")]
+        [Authorize(Roles = "admin, student")]
+        public async Task<IActionResult> GetById(int id)
+        {
+            var query = new GetLoanByIdQuery(id);
+
+            var loan = await _mediator.Send(query);
+
+            if (loan == null)
             {
-                _mediator = mediator;
-            }
-            [HttpGet]
-            [Authorize(Roles = "manager, student")]
-            public async Task<IActionResult> GetAll()
-            {
-                var getAllLoansQuery = new GetAllLoansQuery();
-
-                var loan = await _mediator.Send(getAllLoansQuery);
-
-                return Ok(loan);
-            }
-
-            [HttpGet("{id}")]
-            [Authorize(Roles = "manager, student")]
-            public async Task<IActionResult> GetById(int id)
-            {
-                var query = new GetLoanByIdQuery(id);
-
-                var loan = await _mediator.Send(query);
-
-                if (loan == null)
-                {
-                    return NotFound();
-                }
-
-                return Ok(loan);
-
+                return NotFound();
             }
 
-            [HttpPost]
-            [Authorize(Roles = "manager, student")]
-            public async Task<IActionResult> Post([FromBody] CreateLoanCommand command)
-            {
-                await _mediator.Send(command);
+            return Ok(loan);
 
-                return NoContent();
-            }
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "admin, student")]
+        public async Task<IActionResult> Post([FromBody] CreateLoanCommand command)
+        {
+            await _mediator.Send(command);
+
+            return NoContent();
         }
     }
 }
