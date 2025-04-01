@@ -10,12 +10,12 @@ using System.Threading.Tasks;
 
 namespace Library.Application.Commands.CreateLoan
 {
-    public class CreateLoanHandler : IRequestHandler<CreateLoanCommand, int>
+    public class CreateLoanCommandHandler : IRequestHandler<CreateLoanCommand, int>
     {
         private readonly ILoanRepository _repository;
         private readonly IMapper _mapper;
 
-        public CreateLoanHandler(ILoanRepository repository, IMapper mapper)
+        public CreateLoanCommandHandler(ILoanRepository repository, IMapper mapper)
         {
             this._repository = repository;
             this._mapper = mapper;

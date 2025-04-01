@@ -13,7 +13,7 @@ namespace Library.Core.Entities
             CreatedAt = DateTime.Now;
         }
 
-        public int Id { get; private set; }
-        public DateTime CreatedAt { get; private set; }
+        public int Id { get; set; }
+        public DateTime CreatedAt { get; set; }
     }
 }

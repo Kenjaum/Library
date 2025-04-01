@@ -10,12 +10,12 @@ using System.Threading.Tasks;
 
 namespace Library.Application.Commands.CreateBook
 {
-    public class CreateBookHandler : IRequestHandler<CreateBookCommand, int>
+    public class CreateBookCommandHandler : IRequestHandler<CreateBookCommand, int>
     {
         private readonly IBookRepository _repository;
         private readonly IMapper _mapper;
 
-        public CreateBookHandler(IBookRepository repository, IMapper mapper)
+        public CreateBookCommandHandler(IBookRepository repository, IMapper mapper)
         {
             this._repository = repository;
             this._mapper = mapper;
@@ -24,9 +24,11 @@ namespace Library.Application.Commands.CreateBook
         {
             var book = _mapper.Map<Book>(request);
 
-            await _repository.AddAsync(book);
+            var id = await _repository.AddAsync(book);
 
-            return book.Id;
+            return id;
         }
     }
+
+
 }
